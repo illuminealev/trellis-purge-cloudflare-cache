@@ -1,0 +1,15 @@
+---
+- name: "Purge CF Zone"
+  uri:
+    url: "https://api.cloudflare.com/client/v4/zones/{{ zone_id }}/purge_cache"
+    method: POST
+    headers:
+      Content-Type: "application/json"
+      Authorization: "Bearer {{ cloudflare_api_token }}"
+    body_format: json
+    body: 
+      purge_everything: "{{ purge_all }}"
+  register: purge_result
+
+- debug:
+    var: purge_result

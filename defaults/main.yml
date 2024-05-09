@@ -1,0 +1,3 @@
+---
+# defaults file for trellis-purge-cloudflare-cache
+purge_all: true
