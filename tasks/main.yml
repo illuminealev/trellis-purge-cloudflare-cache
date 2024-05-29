@@ -8,7 +8,7 @@
       Authorization: "Bearer {{ cloudflare_api_token }}"
     body_format: json
     body: 
-      purge_everything: "true"
+      purge_everything: true
   register: purge_result
 
 - debug:
