@@ -10,6 +10,4 @@
     body: 
       purge_everything: true
   register: purge_result
-
-- debug:
-    var: purge_result
+  no_log: true
