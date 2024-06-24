@@ -1,7 +1,8 @@
 ---
-- name: "Purge CF Zone"
+#The zones_id variable supports a list of zones. e.g.: "zones_id": [1234,5678,9012]
+- name: "Purge CF Zones"
   uri:
-    url: "https://api.cloudflare.com/client/v4/zones/{{ zone_id }}/purge_cache"
+    url: "https://api.cloudflare.com/client/v4/zones/{{ item }}/purge_cache"
     method: POST
     headers:
       Content-Type: "application/json"
@@ -11,3 +12,5 @@
       purge_everything: true
   register: purge_result
   no_log: true
+  with_items:
+    - "{{ zones_id }}"
